@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  http_basic_authenticate_with  :username => ENV['USERNAME'], :password => ENV['PASSWORD'], :except => :show
+  http_basic_authenticate_with  :name => ENV['USERNAME'], :password => ENV['PASSWORD'], :except => :show
+
   def index
     @posts = Post.all
 
@@ -9,7 +10,11 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    if params[:id] == nil
+      @post = Post.last
+    else
+      @post = Post.find(params[:id])
+    end
 
     respond_to do |format|
       format.html # show.html.erb

@@ -34,7 +34,10 @@ class PostsController < ApplicationController
   end
 
   def create
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new)
+
     @post = Post.new(params[:post])
+    @post.rendered_content = markdown.render(@post.content)
 
     respond_to do |format|
       if @post.save
@@ -45,10 +48,10 @@ class PostsController < ApplicationController
     end
   end
 
-  # PUT /posts/1
-  # PUT /posts/1.json
   def update
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new)
     @post = Post.find(params[:id])
+    params[:post][:rendered_content] = markdown.render(params[:post][:content])
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
@@ -61,8 +64,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     @post = Post.find(params[:id])
     @post.destroy

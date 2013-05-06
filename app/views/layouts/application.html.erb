@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Lablog</title>
+  <title>The Sourceless Blog</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-<%= yield %>
+  <div class="jumbotron masthead">
+    <div class="container">
+      <h1>Sourceless</h1>
+      <p class="lead">The varied and unimportant writings of a British CS Student</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+        <%= yield %>
+    </div>
+  </div>
 
 </body>
 </html>

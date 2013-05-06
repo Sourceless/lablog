@@ -16,6 +16,9 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
 
+    @nextpost = Post.find_by_id(@post.id + 1)
+    @prevpost = Post.find_by_id(@post.id - 1)
+
     respond_to do |format|
       format.html # show.html.erb
     end

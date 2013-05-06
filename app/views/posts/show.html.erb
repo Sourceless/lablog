@@ -1,10 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 
-<div class="span3 post-title">
-  <h2><%= @post.title %></h2>
-</div>
+<div class="post">
+  <div class="span3 post-title">
+    <h5><%= @post.title %></h5><br />
+  </div>
 
-<div class="span9 muted post-content">
-  <%= raw @post.rendered_content %>
+  <div class="span6 muted post-content">
+    <%= raw @post.rendered_content %>
+  </div>
+
+  <div class="span3">
+    <h6 class="muted"><%= @post.created_at.strftime("%B %Y") %></h6>
+    <a class="btn btn-mini<%= @prevpost ? '' : ' disabled' %>"<%= @prevpost ? ('href=' + url_for(@prevpost)) : '' %>><i class="prev-post icon-arrow-left"></i></a>
+    <a class="btn btn-mini<%= @nextpost ? '' : ' disabled' %>"<%= @nextpost ? ('href=' + url_for(@nextpost)) : '' %>><i class="next-post icon-arrow-right"></i></a>
+  </div>
 </div>

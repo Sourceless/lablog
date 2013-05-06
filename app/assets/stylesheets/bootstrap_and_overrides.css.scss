@@ -12,6 +12,7 @@ font-family:Lato, Helvetica, Sans-serif;
 /* Base class
 ------------------------- */
 .jumbotron {
+  margin-bottom:2em;
   position: relative;
   padding: 10em 0;
   color: #fff;
@@ -102,6 +103,11 @@ only screen and (     -o-min-device-pixel-ratio: 2/1) {
 
 }
 
+.post
+{
+position:relative;
+}
+
 .post-title
 {
 text-align:right;
@@ -109,5 +115,5 @@ text-align:right;
 
 .post-content
 {
-margin-top:1em;
+margin-top:0.68em;
 }
